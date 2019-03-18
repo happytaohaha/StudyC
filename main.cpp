@@ -1,26 +1,19 @@
-#include <stdio.h>
+#include <stdio.h>//include  头文件  <> 一般是标准模板中的
 #include <math.h>
-//一元二次方程
-int test1() {
-    //把三个系数保存到计算机中
-    int a = 1;
-    int b = 5;
-    int c = 6;
-    double delta;//delta  = b*b -4*a*c
-    double x1;
-    double x2;
-    delta = b*b - 4*a*c;
-    if(delta>0){//两个解
-        x1 = (-b + sqrt(delta))/(2*a);
-        x2 = (-b - sqrt(delta))/(2*a);
-        printf("该一元二次方程有两个解，x1 =%f,x2 =%f\n",x1,x2);
-    }else if(delta == 0){//一个解
-        x1=(-b)/(2*a);
-        x2=(-b)/(2*a);
-        printf("该一元二次方程有一个解，x1 =%f,x2 =%f\n",x1,x2);
-    }else{//无解
-        printf("该一元二次方程有无解");
-    }
+//sin计算
+int main() {
+    //定义pi   cospi  = -1    acos （-1）  = pi
+    const double pi = acos(-1.0);
+    double x, r, s;
+    //\n换行   printf  输出一段话
+    printf("input number:\n");
+    //%lf  左边的一个浮点数
+    scanf("%lf",&x);
+    //角度转弧度   也就是是多少pi
+    r = x * pi / 180;
+    //这里的都是拿弧度进行计算的
+    s = sin(r);
+    printf("sin of %lf is %lf\n",x,s);
 
-    return 0;
+    return 0;  //return  0  是正常返回的，如果不是0  则是错误的
 }
