@@ -14,10 +14,6 @@
     <list default="true" id="0187be2c-332c-4186-a98f-7f34a6b870b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hello_world.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hello_world.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hello_world.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/hello_world.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/hello_world.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/hello_world.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,8 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="1" column="2" lean-forward="true" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="10" />
+            <state relative-caret-position="196">
+              <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="16" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -56,8 +52,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="196">
-                <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+              <first_editor relative-caret-position="224">
+                <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
               </first_editor>
               <second_editor />
             </state>
@@ -175,7 +171,7 @@
       <workItem from="1552713441592" duration="5280000" />
       <workItem from="1552738079630" duration="6669000" />
       <workItem from="1552906968773" duration="600000" />
-      <workItem from="1552965954389" duration="2171000" />
+      <workItem from="1552965954389" duration="2488000" />
     </task>
     <task id="LOCAL-00001" summary="test1">
       <created>1552737500634</created>
@@ -226,11 +222,25 @@
       <option name="project" value="LOCAL" />
       <updated>1552907475418</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="实型数的摄入误差">
+      <created>1552977644933</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1552977644933</updated>
+    </task>
+    <task id="LOCAL-00009" summary="实型数的摄入误差">
+      <created>1552977847356</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1552977847357</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14720000" />
+    <option name="totallyTimeSpent" value="15037000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -276,7 +286,8 @@
     <MESSAGE value="sin计算" />
     <MESSAGE value="预处理-宏定义" />
     <MESSAGE value="各种类型的长度" />
-    <option name="LAST_COMMIT_MESSAGE" value="各种类型的长度" />
+    <MESSAGE value="实型数的摄入误差" />
+    <option name="LAST_COMMIT_MESSAGE" value="实型数的摄入误差" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
@@ -293,16 +304,16 @@
     <entry file="file://$PROJECT_DIR$/math.cpp" />
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" column="2" lean-forward="true" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="10" />
+        <state relative-caret-position="196">
+          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="16" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="196">
-            <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+          <first_editor relative-caret-position="224">
+            <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
           </first_editor>
           <second_editor />
         </state>
