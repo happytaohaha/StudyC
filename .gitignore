@@ -1,0 +1,6 @@
+#忽略当前目录下的CMakeLists.txt  文件
+CMakeLists.txt
+#忽略根目录下的cmake-build-debug  文件夹
+/cmake-build-debug
+#忽略根目录下的.idea  文件夹
+/.idea
