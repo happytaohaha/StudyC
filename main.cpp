@@ -1,19 +1,32 @@
 #include <stdio.h>  //标准输入输出
 #include <math.h>
-//数组Fibonacci数列
+//冒泡排序
 int main() {
-    //初始化 如果只赋值前两个  后面的会自动赋值为0
-    // 而  如果只声明  其中的数是随机的
-    int a[20] = {1,1};
-    for(int i = 2; i < 20; i++) {
-        a[i] = a[i-1]+a[i-2];
+    int a[10];
+
+    //输入模块
+    printf("请输入10个数字:\n");
+    for(int i = 0; i<10; i++){
+        //这个如果打空格一直输入也可以   它会自动把输入的放进去， 超出的扔掉
+        scanf("%d", &a[i]);
     }
-    for(int i = 0; i < 20; i++) {
-        //一般把 常数放前面
-        if(0==i%5){
-            printf("\n");
+
+    //冒泡排序模块
+    //外层只需要 9个数 内层  最大9个数
+    int temp;
+    for(int i = 0; i<9; i++){
+        for(int j = i+1;j<10;j++){
+            if(a[i]>a[j]){
+                temp = a[j];
+                a[j] = a[i];
+                a[i] = temp;
+            }
         }
-        printf("a[%d]= %d\t", i, a[i]);
+    }
+
+    //输出模块
+    for(int i = 0; i<10; i++){
+        printf("%d ", a[i]);
     }
     return 0;
 }
