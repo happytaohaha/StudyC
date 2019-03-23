@@ -28,4 +28,5 @@
 0.4.11引用传递和地址传递值传递再探究<br>
 0.4.12main函数的研究<br>
 0.4.13void 类型 void指针和const指针<br>
-0.4.14define 与 typedef 的区别<br>
+0.4.15#define 与 typedef 的区别 分错P了<br>
+0.5.2宏定义应用<br>
