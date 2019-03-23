@@ -27,4 +27,5 @@
 0.4.10返回指针的函数<br>
 0.4.11引用传递和地址传递值传递再探究<br>
 0.4.12main函数的研究<br>
-0.4.12void 类型 void指针和const指针<br>
+0.4.13void 类型 void指针和const指针<br>
+0.4.14define 与 typedef 的区别<br>
