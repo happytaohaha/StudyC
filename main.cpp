@@ -2,31 +2,27 @@
 #include <cstring>
 #include <cstdlib>
 
-//位运算
-//大小写转换  A 65~90   a 65+32  97 ~122
+//移位运算符
 int main(int argc, char *argv[]){
-    char ch;
+    int a = 2;
+    int b = -2;
+    unsigned int c = 2;
+    unsigned  int d = 255;
+    a = a >> 1;   //箭头指哪别往那边移动
+    b = b >> 1;
+    c = c >> 1;
+    printf("%d\n",c);
+    printf("%d\n",a);
+    printf("%d\n",b);
+    a = a << 1;
+    b = b << 1;
+    c = c << 1;
+    printf("%d\n",c);
+    printf("%d\n",a);
+    printf("%d\n",b);
 
-    printf("请输入一个字母\n");
-    ch = getchar();
-    while (!(ch >= 'A' && ch <= 'z')|| (ch > 'Z' && ch < 'a')){
-        printf("输入错误请重新输入:\n");
-        ch = getchar();
-    }
-    if(ch & 32){ //  00010000  与的话  判断 第五位是否为1
-         ch = ch & 223;  //111   11011111
-    }else {   //A - a
-        ch = ch | 32;
-    }
-    printf("%c",ch);
-    /**
-     * a  = 3 ,b =4
-     * 交换
-     * a = a ^ b;  异或
-     * b = b ^ a;
-     * a = a ^ b;
-     */
-
+    //有算数移位 带符号   正数  左移 右边补0  负数 左移  补1
+    // 逻辑移位不带符号   正数  左移 右边补0
 
     return 0;
 }
