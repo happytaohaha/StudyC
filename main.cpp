@@ -1,19 +1,25 @@
 #include <stdio.h>
 #include <cstring>
 #include <cstdlib>
+#include <math.h>
 
-//循环移位
+//1063
+//C语言控制输出格式  %.2lf
 int main(int argc, char *argv[]){
-    unsigned char a, b, c;
-    int n;
-    printf("请输入需要循环右移的数字：");
-    scanf("%d", &a);
-    printf("请输入需要右移动的位数:");  //原始数  00000011
-    scanf("%d", &n);//1   00000001
-    b = a <<(sizeof(char) *8 - n ); //7   移动完低位补  10000000
-    c = a >>n;
-    c = c | b;          //10000001
-    printf("结果是: %c\n",c);
+    int a = 0;
+    int b = 0, c = 0;
+    double max = 0;
+    scanf("%d",&a);
+    while(a){
+        double temp;
+        scanf("%d %d", &b, &c);
+        temp =sqrt(b*b+c*c);
+        if(temp > max){
+            max = temp;
+        }
+        a--;
+    }
+    printf("%.2lf",max);
     return 0;
 }
 
