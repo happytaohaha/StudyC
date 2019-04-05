@@ -3,6 +3,17 @@
 #include<string.h>
 using namespace std;
 //优雅的实现1002
+/**
+ * 用string接收输入，string的每一位数字累加到sum里面，
+ * 再将sum转化为string类型的num，对num的每一位输出对应中文拼音～
+ *
+ * 1.把0 - 9 放入数组中使用时调用
+ * 2.while((ch=getchar())!='\n')	  sum += (ch - '0');  在获取的时候就进行处理
+ * 3.判断位数用/10
+ * 4.取每一位  先%10  再 /10
+ * 5.输出也有技巧
+ */
+
 int main()
 {
     int sum=0;int count=0;int temp=0;
