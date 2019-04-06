@@ -1,43 +1,143 @@
-#include <iostream>
-#include<algorithm>
+#include<iostream>
+#include<stdio.h>
 #include<string.h>
+#include<algorithm>
+
+//1003
 using namespace std;
-//优雅的实现1002
-/**
- * 用string接收输入，string的每一位数字累加到sum里面，
- * 再将sum转化为string类型的num，对num的每一位输出对应中文拼音～
- *
- * 1.把0 - 9 放入数组中使用时调用
- * 2.while((ch=getchar())!='\n')	  sum += (ch - '0');  在获取的时候就进行处理
- * 3.判断位数用/10
- * 4.取每一位  先%10  再 /10
- * 5.输出也有技巧
- */
-
-int main()
+bool selectStr(char str[],int length)
 {
-    int sum=0;int count=0;int temp=0;
-    char ch;string s;//ch作为临时变量保存输入的每一个字符，s保存sum的每一个数字
-    string b[10] =  {"ling", "yi", "er", "san", "si", "wu", "liu", "qi", "ba", "jiu"};
-    while((ch=getchar())!='\n')	//如果一直输入字符，不按回车的话
-        sum += (ch - '0');
 
-    count = 0;
-    temp = sum;
-    while (temp)            //判断和一共有多少位
+    for(int i=0; i<length; i++)
     {
-        temp /= 10;
-        count++;
+        if(str[i]!='A' && str[i]!='P' && str[i]!='T')
+            return false;
+        else
+            return true;
     }
-    for (int i = count-1; i >=0; i--)
-    { s[i] = sum % 10+'0'; //加上0所对应的Ascll码转化为字符表示的数字
-        sum /= 10;
+}
+int main()
+
+{
+    int n;
+    char str[101];
+    scanf("%d",&n);
+    while(n--)
+    {
+        memset(str,0,101);
+        scanf("%s",str);
+        int length = strlen(str);
+        if(selectStr(str,length))
+        {
+            int lena = 0;
+            int lenb = 0;
+            int lenc = 0;
+            for(int i=0;i<length;i++)
+            {
+                if(str[i]!='P')
+                    lena++;
+                else
+                    break;
+            }
+            for(int i=0,cnt=0;i<length;i++)
+            {
+                if(str[i]!='T')
+                    cnt++;
+                else
+                {
+                    lenb = cnt-lena-1;
+                    lenc = length-cnt-1;
+                    break;
+                }
+
+            }
+            if(lenb == 0)
+                printf("NO\n");
+            else
+            {
+
+                if(lena*lenb == lenc)
+                {
+                    printf("YES\n");
+                }
+                else
+                {
+                    printf("NO\n");
+                }
+            }
+            //test
+
+        }
+        else
+        {
+            printf("NO\n");
+        }
+
     }
-    for (int i = 0; s[i] != 0; i++){
-        if (i > 0)
-            printf(" ");
-        cout<<b[s[i]-'0'];
+
+    return 0;
+}
+
+/*
+ * #include <stdio.h>
+
+
+//1003
+int main(int argc, char *argv[]){
+    int a = 1;
+    scanf("%d",&a);
+    char p[10][100];
+    getchar();
+    for(int j =0;j < a;j++){
+        int i = 0;
+        char inputA;
+        do{
+            inputA = getchar();
+//            printf("%c",inputA);
+            p[j][i] = inputA;
+            i++;
+        }while (inputA != '\n');
+    }
+//    for(int j =0;j<a;j++){
+//        printf("%s",p[j]);
+//    }
+
+    int j =0;
+    while(a){
+        a--;
+        int flag = 0;
+        int yes = 0;
+        int i = 0;
+        for(i = 0;p[j][i] != '\n';i++){
+            if(p[j][i] =='P'){
+                flag = 1;
+            }else if(p[j][i] =='A'){
+                if(flag == 1){
+                    flag = 2;
+                }else if (flag == 2){
+                    flag = 4;
+                }else{
+                    flag = 0;
+                }
+            }else if(p[j][i] =='T'){
+                if(flag == 2 || flag == 4){
+                    flag = 3;
+                    yes = 1;
+                }else{
+                    break;
+                }
+            }else{
+                break;
+            }
+        }
+
+        if(yes == 1 && p[j][i] == '\n'){
+            printf("YES\n");
+        }else{
+            printf("NO\n");
+        }
+        j++;
     }
     return 0;
-
 }
+ * */
