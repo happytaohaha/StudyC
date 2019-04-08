@@ -1,61 +1,69 @@
 #include<stdio.h>
-//1004成绩排名
-//找 最大 最小  每一个进行比较  总共比较 2n 次
-//也可以使用 两两比较  大的和大的进行比较  小的和小的进行比较 3/2n  次
+
+
+//1005 继续(3n+1)猜想
+/**
+ * 1.利用flag来及进行标记哪一个是否已经被扫描过了，这样不需要花费额外的空间
+ * 2.进行排序
+ * 3.flag 可能很大所以这里设为10000
+ */
 int main()
-
 {
-    int a = 0;
-    int max = 0;
-    int min = 0;
-    char personMaxName[11]="";
-    char personMinName[11]="";
-    char personMaxNum[11]="";
-    char personMinNum[11]="";
-    char tempName[11]="";
-    char tempNum[11]="";
-    int tempScore = 0;
-
-    //进行第一次
-    scanf("%d",&a);
-    a--;
-    scanf("%s %s %d",tempName,tempNum,&tempScore);
-    max = tempScore;
-    min = tempScore;
-    for(int i = 0; i< 10;i++){
-        personMaxName[i] = tempName[i];
-        personMinName[i] = tempName[i];
-    }
-    for(int i = 0; i< 10;i++){
-        personMaxNum[i] = tempNum[i];
-        personMinNum[i] = tempNum[i];
-    }
-    //以后只要判断大小
-    while(a){
-        a--;
-        scanf("%s %s %d",tempName,tempNum,&tempScore);
-        if(tempScore > max){
-            max = tempScore;
-
-            for(int i = 0; i< 10;i++){
-                personMaxName[i] = tempName[i];
-            }
-            for(int i = 0;i< 10;i++){
-                personMaxNum[i] = tempNum[i];
-            }
-
-        }
-        if(tempScore < min){
-            min = tempScore;
-            for(int i = 0;i< 10;i++){
-                personMinName[i] = tempName[i];
-            }
-            for(int i = 0;i< 10;i++){
-                personMinNum[i] = tempNum[i];
+    int sum = 0;
+    scanf("%d",&sum);
+    int a[100]={};
+    int temp[100]={};
+    int flag[10000] ={};
+    int indexTemp = 0;
+    int t = 0;
+    for(int i = 0; i < sum; i++){
+        scanf("%d",&a[i]);
+        t = a[i];
+        //t没有被标记过
+        if(flag[t] != 1){
+            while(t != 1){//覆盖
+                if(t%2 == 0) {
+                    t = t/2;
+                }else{
+                    t = (t*3+1)/2;
+                }
+                printf("%d ",t);
+                if(flag[t] == 1){ //以后的覆盖了就让以后的不用覆盖
+                    break;
+                }
+                flag[t] = 1;
             }
         }
     }
-    printf("%s %s\n",personMaxName,personMaxNum);
-    printf("%s %s\n",personMinName,personMinNum);
+
+    for(int i = 0;i < sum; i++){
+        t = a[i];
+        if(!flag[t]){
+            temp[indexTemp] = t;
+            indexTemp++;
+        }
+    }
+
+    for(int i = 0; i <indexTemp; i++){
+        int tempnum = 0;
+        for(int j = i+1; j <indexTemp;j++ ){
+            if(temp[i]<temp[j]){
+                tempnum = temp[i];
+                temp[i] = temp[j];
+                temp[j] = tempnum;
+            }
+        }
+    }
+    int first = 1;
+    for(int i =0; i < indexTemp; i++){
+        if(first){
+            printf("%d",temp[i]);
+            first = 0;
+        }else{
+            printf(" %d",temp[i]);
+        }
+    }
+
+    return 0;
 }
 
