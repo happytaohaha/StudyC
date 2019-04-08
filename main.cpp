@@ -1,48 +1,26 @@
 #include<stdio.h>
-#include <math.h>
 
-int isPrime(int i);
-//不能用bool
-//1007 素数对猜想
+//1008 数组元素循环右移问题
 /**
- * 1.求解素数的方法  i < sqrt(a)  然后  比较 a %i == 0
- * 2.等于号的使用是否正确
- * 3. PAT 里面标准C 没有bool
- * 4. 可以使用math.h
+ * 1.做了一个欺骗让他认为我做了移位，其实并没有
+ * 2.用好 / 和 %  功能很强大
  */
 int main()
 {
-    int a[10000] ={};
-    int num = 0;
-    scanf("%d",&num);
-    int count = 0;
-    a[0] = 1;
-    a[1] = 2;
-    a[2] = 3;
-    //素数的下标
-    int count1 = 2;
-    //差一个等于号因为可能最后一个数也为素数
-    for(int i = 3; i<= num; i++){
-        if(isPrime(i)){
-            count1++;
-            a[count1] = i;
-            if(a[count1] - a[count1-1]==2){
-                count ++;
-            }
-
+    int n = 0, m = 0;
+    int array[100]= {};
+    scanf("%d %d", &n, &m);
+    for(int i = 0; i < n; i++){
+        scanf("%d",&array[i]);
+    }
+    m =m % n;
+    for(int i = 0; i < n; i++){
+        if(0 == i){
+            printf("%d",array[(n-m+i)%n]);
+        }else{
+            printf("% d",array[(n-m+i)%n]);
         }
     }
-    printf("%d", count);
     return 0;
-}
-//必须是<=
-int isPrime(int i) {
-    int flag = 1;
-    for(int j = 2; j <= (int)sqrt(i); j ++){
-            if(0 == i % j){
-                flag = 0;
-            }
-    }
-    return flag;
 }
 
