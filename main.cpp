@@ -1,30 +1,22 @@
 #include<stdio.h>
-//
 /**
- * scanf  是有返回值的
- * scanf("%d %d", &a, &b)
- * 如果a b被成功读入，返回值为2；
- * 如果只有a被成功读入，返回值为1；
- * 如果a和b都未被成功读入，返回值为0；
- * 读取错误返回的是 -1  EOF
- * 如果遇到错误或遇到end of file，返回值为EOF。end of file为Ctrl+z 或者Ctrl+d。
+ * 应该不让用long
+ * 但是比较内部有自动转化为 int -> long  比较大小应该就可以比较了
  */
- //1010 一元多项式求导
+ //1011 A+B 和 C
 int main() {
-    int a, b;
-
-    int flag = 0;
-    while(scanf("%d %d", &a, &b) == 2){
-        if( b != 0){
-            if(flag == 0){
-                    printf("%d %d", a*b, b-1);
-                    flag = 1;
-            }else{
-                    printf(" %d %d", a*b, b-1);
-            }
+    int num = 0;
+    long a, b, c;
+    scanf("%d",&num);
+    for(int i =1; i <= num; i++){
+        scanf("%ld %ld %ld", &a, &b, &c);
+        if(a + b > c){
+            printf("Case #%d: true\n", i);
+        }else{
+            printf("Case #%d: false\n", i);
         }
     }
-     if(flag == 0)
-         printf("0 0");
+
+
     return 0;
 }
