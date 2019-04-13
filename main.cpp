@@ -1,94 +1,50 @@
 #include<stdio.h>
-#include <math.h>
-/**
- * 1.字符串如果需要60位 一般要给61位最后一位存\n
- * 2.第一个条件是A-G  最后还要%7
+#include <algorithm>
+#include <cstring>
+/**  1015 德才论
+ * 1. 德才都达标  按分数排序
+ * 2. 德胜才  德达标  才不达标  分数排序
+ * 3. 德才皆亡  德分达到最低录取分  才分低于德分    得胜才
+ * 4.其他最后
+ * 5.去掉 有出现到不达到最低分的人
+ * 6. 自己写的还是有问题
  */
-//1014福尔摩斯的约会
-int main() {
-    char a[61] = "";
-    char b[61] = "";
-    char c[61] = "";
-    char d[61] = "";
-    gets(a);
-    gets(b);
-    gets(c);
-    gets(d);
-    int x = 0;
-    int y = 0;
-    int z = 0;
-    int w = 0;
-    int flagHours =0 ;//找到大写字母
-    for(int i=0; a[i] !='\0'&& b[i] != '\0'; i++){
-        if(x == 0){
-            if( a[i] >= 'A' && a[i] <= 'G'){
-                if(a[i] == b[i]){
-                    x = (int)a[i] - 'A' + 1;
-                }
-            }
-        }else{
-            if(flagHours==0){//找到0-9 A-N
-                if((a[i] >= 'A' && a[i] <= 'N')){
-                    if(a[i] == b[i]){
-                        y = a[i] - 'A'+10;
-                        flagHours =1;
-                    }
-                }else if(a[i]>= '0' && a[i] <= '9'){
-                    if(a[i] == b[i]){
-                        y = a[i] - '0';
-                        flagHours =1;
-                    }
-                }
-            }
+using namespace std;
+struct info{
+    char num[10];
+    int de_s,cai_s,sum;
+    int clas;//类别
+}stu[100010];
+// 调用比较函数  排序方式
+bool cmp(info a,info b){
+    if(a.clas != b.clas) return a.clas < b.clas;
+    else if(a.sum != b.sum) return a.sum > b.sum;
+    else if(a.de_s != b.de_s) return a.de_s > b.de_s;
+    else return strcmp(a.num,b.num) < 0;
+}
+
+int main(){
+    int N,L,H;
+    scanf("%d%d%d",&N,&L,&H);
+    int cnt = N;
+    for(int i = 0;i < N; i++) {
+        scanf("%s %d %d",&stu[i].num,&stu[i].de_s,&stu[i].cai_s);
+        stu[i].sum = stu[i].de_s + stu[i].cai_s;
+        if(stu[i].de_s < L || stu[i].cai_s < L) {
+            stu[i].clas = 5;
+            cnt--;//及格人数减少1   如果不及格就扔了
         }
+        else if(stu[i].de_s >= H && stu[i].cai_s >= H) stu[i].clas = 1;
+        else if(stu[i].de_s >= H && stu[i].cai_s < H) stu[i].clas = 2;
+        else if(stu[i].de_s < H && stu[i].cai_s < H && stu[i].de_s >= stu[i].cai_s) stu[i].clas = 3;
+        else stu[i].clas = 4;
     }
-    int flagMin = 1;
-    for(int i=0; c[i] !='\0'&& d[i] != '\0'; i++){
-        if(flagMin){//第 1 对相同的英文字母 s  的位置
-            if((c[i] >= 'A'  && c[i] <= 'Z') || (c[i] >= 'a'  && c[i] <= 'z')) {
-                if(c[i] == d[i]){
-                    w = z;
-                    flagMin = 0;
-                }
-            }
-        }
-        z++;
+    sort(stu,stu+N,cmp);
+    printf("%d\n",cnt);
+    for(int i = 0;i < cnt; i++) {
+        printf("%s %d %d\n",stu[i].num,stu[i].de_s,stu[i].cai_s);
     }
-    x= x%7;
-    switch(x){
-        case 0:
-            printf("%s","SUN ");
-            break;
-        case 1:
-            printf("%s","MON ");
-            break;
-        case 2:
-            printf("%s","TUE ");
-            break;
-        case 3:
-            printf("%s","WED ");
-            break;
-        case 4:
-            printf("%s","THU ");
-            break;
-        case 5:
-            printf("%s","FRI ");
-            break;
-        case 6:
-            printf("%s","SAT ");
-            break;
-        default:
-            break;
-    }
-    if(y<=9){
-        printf("0%d:",y);
-    }else{
-        printf("%d:",y);
-    }
-    if(w<=9){
-        printf("0%d",w);
-    }else {
-        printf("%d", w);
-    }
+
     return 0;
 }
+
