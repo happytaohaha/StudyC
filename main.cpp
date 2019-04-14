@@ -1,25 +1,25 @@
 #include<stdio.h>
-/** int 4字节 有符号数 +2的30次方-1      -2的30次方         unsigned int 2的31次方 - 1
- *  1.非负整数：    0  正整数
+/**
  *
  */
- //1022 D进制的A+B
+ //1023 组个最小数
 int main(){
-    unsigned int A,B,D;
-    int res[31]={};
-    scanf("%d %d %d", &A, &B, &D);
-    unsigned int C = A + B;
-    int i = 0;
-    if(C == 0){
-        printf("%d", 0);
-    }else{
-        for(; C != 0;i++){
-            res[i] =C%D;
-            C = C / D;
+    int a[10] ={};
+    for(int i = 0; i < 10; i++){
+        scanf("%d", &a[i]);
+    }
+
+    for(int i = 1; i < 10; i++){
+        if(a[i]  != 0){
+            printf("%d", i);
+            a[i]--;
+            break;
         }
-        i--;
-        for (; i >= 0 ; --i) {
-            printf("%d", res[i]);
+    }
+    for(int i = 0; i < 10; i++){
+        while(a[i]  != 0){
+            printf("%d", i);
+            a[i]--;
         }
     }
     return 0;
