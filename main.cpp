@@ -1,73 +1,51 @@
 #include<stdio.h>
 /**
- * 1. 4位数
- * 2. 0001 -1000
- * 3. %04d 前方补0
- * 4. 特殊情况  第一个输入  6174
+ *  背包问题
+ *  1. 全部用成double   double a[1000][3]
+ *  2. 考虑特殊情况   不够需求的情况
  */
-int getMax( int a){
-    int s[4] = {};
-    int result = 0;
-    for(int i = 0; i < 4; i++){
-        s[i] = a % 10;
-        a = a / 10;
-    }
-    int temp = 0;
-    for(int i = 0; i < 4; i++){
-        for(int j = i; j < 4; j++){
-            if(s[i] < s[j]){
-                temp = s[i];
-                s[i] = s[j];
-                s[j] = temp;
-            }
-        }
-    }
-    for(int i = 0; i < 4; i++){
-        result = result * 10 +s[i];
-    }
-    return result;
-};
-int getMin( int a){
-    int s[4] = {};
-    int result = 0;
-    for(int i = 0; i < 4; i++){
-        s[i] = a % 10;
-        a = a / 10;
-    }
-    int temp = 0;
-    for(int i = 0; i < 4; i++){
-        for(int j = i; j < 4; j++){
-            if(s[i] > s[j]){
-                temp = s[i];
-                s[i] = s[j];
-                s[j] = temp;
-            }
-        }
-    }
-    for(int i = 0; i < 4; i++){
-        result = result * 10 +s[i];
-    }
-    return result;
-};
-// 1019 数字黑洞
+ //1020 月饼
 int main(){
-    int a = 0;
-    scanf("%d", &a);
-    if(a%1111 ==0){  //特殊情况
-        printf("%4d - %4d = 0000",a,a);
-    }else{
-        int b1 = getMax(a);
-        int b2 = getMin(a);
-        a = b1 - b2;
-        printf("%d - %04d = %04d\n", b1, b2, a);
-        while(a != 6174){
-             b1 = getMax(a);
-             b2 = getMin(a);
-            a = b1 - b2;
-            printf("%d - %04d = %04d\n", b1, b2, a);
+    int N;
+    double D;
+    double sum = 0;
+    scanf("%d %lf", &N, &D);
+    double a[1000][3] ={};
+    for(int i = 0; i < N; i++){
+        scanf("%lf", &a[i][0]);
+    }
+    for(int i = 0; i < N; i++){
+        scanf("%lf", &a[i][1]);
+        a[i][2] = a[i][1]/a[i][0];
+    }
+    double  temp = 0;
+    for(int i = 0; i < N; i++){
+        for(int j = i+1; j < N; j++){
+            if(a[i][2]<a[j][2]){
+                temp = a[j][2];
+                a[j][2] = a[i][2];
+                a[i][2] = temp;
+
+                temp = a[j][1];
+                a[j][1] =a[i][1];
+                a[i][1] = temp;
+
+                temp = a[j][0];
+                a[j][0] =a[i][0];
+                a[i][0] = temp;
+            }
         }
     }
-    //排序
+    for(int i=0; D >0 && i< N ;i++ ){
+        if(D -(int)a[i][0] >= 0){
+            D = D -(int)a[i][0];
+            sum +=  a[i][1];
+        }else{
+            sum += D/a[i][0] * a[i][1];
+            D = 0;
+        }
+    }
+    printf("%.2f",sum);
     return 0;
 }
 
